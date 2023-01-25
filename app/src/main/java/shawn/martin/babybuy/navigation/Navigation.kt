@@ -8,6 +8,7 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import shawn.martin.babybuy.navigation.destination_composables.*
 import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
 import shawn.martin.babybuy.util.Constants.HOME_SCREEN
+import shawn.martin.babybuy.util.Constants.WELCOME_SCREEN
 
 // Function going to be called in MainActivity.kt
 // Wraps the app with AnimatedNavigationController
@@ -24,7 +25,7 @@ fun SetUpNavigation(
 
 
     // NavHost, so all Composables can be animated
-    AnimatedNavHost(navController = navController, startDestination = HOME_SCREEN) {
+    AnimatedNavHost(navController = navController, startDestination = WELCOME_SCREEN) {
         homeComposable(
             sharedViewModel = sharedViewModel,
             navigateToItem = screen.item,

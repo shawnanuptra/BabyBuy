@@ -7,4 +7,6 @@ class SharedViewModel : ViewModel() {
     // PROPERTIES
 
     // SETTERS
+
+    // todo: init firebase.auth(), and add Signup/Login functionality
 }

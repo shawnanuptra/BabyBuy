@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
 
 
         super.onCreate(savedInstanceState)
-        //initialize SplashScreren
+        //initialize SplashScreen
         installSplashScreen()
         setContent {
             BabyBuyTheme {
