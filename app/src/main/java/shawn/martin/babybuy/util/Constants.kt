@@ -1,5 +1,7 @@
 package shawn.martin.babybuy.util
 
+import androidx.compose.ui.unit.dp
+
 object Constants {
 
     // ROUTE NAMES
@@ -11,4 +13,10 @@ object Constants {
 
     // NAVIGATION ANIMATION
     const val ANIMATION_DURATION = 300
+
+    // LOGIN/SIGN UP SCREENS
+    const val SCREEN_HORIZONTAL_PADDING = 60
+    const val SCREEN_VERTICAL_PADDING = 80
+
+
 }
