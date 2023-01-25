@@ -65,8 +65,10 @@ dependencies {
 
     // Implement Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:31.2.0')
-
     // Dependency for Firebase
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    // Implement SplashScreen API
+    implementation("androidx.core:core-splashscreen:1.0.0")
 
 }
