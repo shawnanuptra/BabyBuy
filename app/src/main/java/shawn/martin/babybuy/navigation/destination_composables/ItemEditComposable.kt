@@ -5,7 +5,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.navigation.NavGraphBuilder
 import com.google.accompanist.navigation.animation.composable
-import shawn.martin.babybuy.ui.screens.ItemScreen
+import shawn.martin.babybuy.ui.screens.item.ItemScreen
 import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
 import shawn.martin.babybuy.util.Constants.ANIMATION_DURATION
 import shawn.martin.babybuy.util.Constants.ITEM_SCREEN
