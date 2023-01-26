@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import shawn.martin.babybuy.R
 
 @Composable
-fun ColumnScope.HomeTitle(weight: Float) {
+fun ColumnScope.HomeTitle(weight: Float, navigateToWelcome: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -28,7 +28,7 @@ fun ColumnScope.HomeTitle(weight: Float) {
             )
 
             //Icon to logout
-            IconButton(onClick = { }) {
+            IconButton(onClick = { navigateToWelcome() }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_baseline_logout_24),
                     contentDescription = "Log out button"
@@ -54,7 +54,7 @@ fun HomeTitlePreview() {
 
             _ ->
         Column(Modifier.fillMaxSize()) {
-            HomeTitle(weight = 1f)
+            HomeTitle(weight = 1f, navigateToWelcome = {})
             Spacer(Modifier.weight(9f))
         }
     }

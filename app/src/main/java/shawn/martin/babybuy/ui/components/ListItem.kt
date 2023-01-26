@@ -20,6 +20,7 @@ fun ListItem(
     name: String,
     cost: Number,
     itemStatus: ItemStatus,
+    //TODO: pass item properties to ItemScreen to be able to edit
 ) {
     Surface(
         modifier = Modifier
@@ -50,7 +51,7 @@ fun ListItem(
                 color = Color.Black
             )
             Text(
-                text = "£${"%.2f".format(cost)}",
+                text = "£50",
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),

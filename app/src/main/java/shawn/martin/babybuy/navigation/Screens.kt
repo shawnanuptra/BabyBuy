@@ -11,7 +11,9 @@ import shawn.martin.babybuy.util.Constants.WELCOME_SCREEN
 class Screens(navController: NavController) {
 
     val welcome = {
-        navController.navigate(route = WELCOME_SCREEN)
+        navController.navigate(route = WELCOME_SCREEN) {
+            popUpTo(WELCOME_SCREEN) { inclusive = true }
+        }
     }
     val home = {
         navController.navigate(route = HOME_SCREEN)
