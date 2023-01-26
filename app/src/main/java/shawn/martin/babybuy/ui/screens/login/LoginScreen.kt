@@ -2,10 +2,7 @@ package shawn.martin.babybuy.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,8 +44,7 @@ fun LoginScreen(
             ) {
                 Text(
                     text = "Welcome,",
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.h1
                 )
                 Text(
                     text = "happy to have you back!",
@@ -80,7 +76,7 @@ fun LoginScreen(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Don't have an account? ")
+                Text(text = "Don't have an account?")
                 TextButton(onClick = { navigateToSignup() }) {
                     Text(
                         text = "Sign Up here.",

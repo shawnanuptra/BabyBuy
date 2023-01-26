@@ -7,7 +7,6 @@ import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import shawn.martin.babybuy.navigation.destination_composables.*
 import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
-import shawn.martin.babybuy.util.Constants.HOME_SCREEN
 import shawn.martin.babybuy.util.Constants.WELCOME_SCREEN
 
 // Function going to be called in MainActivity.kt

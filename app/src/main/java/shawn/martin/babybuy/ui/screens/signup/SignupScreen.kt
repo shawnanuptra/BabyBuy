@@ -2,10 +2,7 @@ package shawn.martin.babybuy.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,7 +17,8 @@ import androidx.compose.ui.unit.sp
 import shawn.martin.babybuy.R
 import shawn.martin.babybuy.ui.components.PrimaryButton
 import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
-import shawn.martin.babybuy.util.Constants
+import shawn.martin.babybuy.util.Constants.SCREEN_HORIZONTAL_PADDING
+import shawn.martin.babybuy.util.Constants.SCREEN_VERTICAL_PADDING
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -34,8 +32,8 @@ fun SignupScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(
-                    horizontal = Constants.SCREEN_HORIZONTAL_PADDING.dp,
-                    vertical = Constants.SCREEN_VERTICAL_PADDING.dp
+                    horizontal = SCREEN_HORIZONTAL_PADDING.dp,
+                    vertical = SCREEN_VERTICAL_PADDING.dp
                 ),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -46,8 +44,7 @@ fun SignupScreen(
             ) {
                 Text(
                     text = "Hello there,",
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.h1
                 )
                 Text(
                     text = "Excited to work with you!",
@@ -77,7 +74,7 @@ fun SignupScreen(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Already have an account? ")
+                Text(text = "Already have an account?")
                 TextButton(onClick = { navigateToLogin() }) {
                     Text(
                         text = "Log In here.",
