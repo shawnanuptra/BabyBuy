@@ -19,6 +19,8 @@ import kotlinx.coroutines.launch
 import shawn.martin.babybuy.ui.screens.home.HomeTitle
 import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
 import shawn.martin.babybuy.util.Constants.SCREEN_HORIZONTAL_PADDING
+import shawn.martin.babybuy.ui.components.ListItem
+import shawn.martin.babybuy.util.ItemStatus
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @ExperimentalMaterialApi
@@ -59,10 +61,11 @@ fun HomeScreen(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .weight(8f)
+                        .weight(8f),
+                    verticalArrangement = Arrangement.spacedBy(15.dp)
                 ) {
-                    items(50) {
-                        Text("TEXT BOX NUMBER ${it.toString()}")
+                    items(5) {
+                        ListItem("Item Name", 52, ItemStatus.PURCHASED)
                     }
                 }
                 Spacer(modifier = Modifier.weight(1f))

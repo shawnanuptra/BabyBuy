@@ -28,7 +28,7 @@ fun ColumnScope.HomeTitle(weight: Float) {
             )
 
             //Icon to logout
-            IconButton(onClick = { }, modifier = Modifier.fillMaxSize()) {
+            IconButton(onClick = { }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_baseline_logout_24),
                     contentDescription = "Log out button"
