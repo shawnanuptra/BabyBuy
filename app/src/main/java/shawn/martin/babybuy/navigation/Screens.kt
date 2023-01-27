@@ -16,15 +16,22 @@ class Screens(navController: NavController) {
         }
     }
     val home = {
-        navController.navigate(route = HOME_SCREEN)
+        navController.navigate(route = HOME_SCREEN) {
+            popUpTo(HOME_SCREEN) { inclusive = true }
+        }
     }
     val item = {
         navController.navigate(route = ITEM_SCREEN)
     }
     val login = {
-        navController.navigate(route = LOGIN_SCREEN)
+        navController.navigate(route = LOGIN_SCREEN) {
+            popUpTo(WELCOME_SCREEN) { inclusive = false }
+        }
     }
     val signup = {
-        navController.navigate(route = SIGNUP_SCREEN)
+        navController.navigate(route = SIGNUP_SCREEN) {
+            popUpTo(WELCOME_SCREEN) { inclusive = false }
+
+        }
     }
 }

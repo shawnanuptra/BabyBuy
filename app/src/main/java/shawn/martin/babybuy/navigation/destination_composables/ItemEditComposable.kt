@@ -17,18 +17,18 @@ fun NavGraphBuilder.itemComposable(
 ) {
     composable(
         route = ITEM_SCREEN,
-        enterTransition = {
-            slideIntoContainer(
-                AnimatedContentScope.SlideDirection.Left,
-                tween(ANIMATION_DURATION)
-            )
-        },
-        exitTransition = {
-            slideOutOfContainer(
-                AnimatedContentScope.SlideDirection.Right,
-                tween(ANIMATION_DURATION)
-            )
-        }
+//        enterTransition = {
+//            slideIntoContainer(
+//                AnimatedContentScope.SlideDirection.Left,
+//                tween(ANIMATION_DURATION)
+//            )
+//        },
+//        exitTransition = {
+//            slideOutOfContainer(
+//                AnimatedContentScope.SlideDirection.Right,
+//                tween(ANIMATION_DURATION)
+//            )
+//        }
 
     ) { navBackStackEntry ->
 

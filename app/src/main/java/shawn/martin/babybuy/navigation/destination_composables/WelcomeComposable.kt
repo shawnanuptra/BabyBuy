@@ -20,7 +20,7 @@ fun NavGraphBuilder.welcomeComposable(
         route = WELCOME_SCREEN,
         exitTransition = {
             slideOutOfContainer(
-                AnimatedContentScope.SlideDirection.Right,
+                AnimatedContentScope.SlideDirection.Down,
                 tween(Constants.ANIMATION_DURATION)
             )
         },

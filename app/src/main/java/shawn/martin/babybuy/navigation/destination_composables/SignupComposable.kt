@@ -18,10 +18,18 @@ fun NavGraphBuilder.signupComposable(
     composable(
         route = SIGNUP_SCREEN,
         enterTransition = {
-            slideIntoContainer(
-                AnimatedContentScope.SlideDirection.Left,
-                tween(ANIMATION_DURATION)
-            )
+            when {
+                (initialState.destination.route == "welcome") ->
+                    slideIntoContainer(
+                        AnimatedContentScope.SlideDirection.Down,
+                        tween(ANIMATION_DURATION)
+                    )
+                (initialState.destination.route == "login") ->
+                    slideIntoContainer(
+                        AnimatedContentScope.SlideDirection.Left
+                    )
+                else -> null
+            }
         },
         exitTransition = {
             when {
@@ -30,8 +38,13 @@ fun NavGraphBuilder.signupComposable(
                         AnimatedContentScope.SlideDirection.Right,
                         tween(ANIMATION_DURATION)
                     )
+                (targetState.destination.route == "welcome") ->
+                    slideOutOfContainer(
+                        AnimatedContentScope.SlideDirection.Up,
+                        tween(ANIMATION_DURATION)
+                    )
                 else -> slideOutOfContainer(
-                    AnimatedContentScope.SlideDirection.Left,
+                    AnimatedContentScope.SlideDirection.Down,
                     tween(ANIMATION_DURATION)
                 )
             }

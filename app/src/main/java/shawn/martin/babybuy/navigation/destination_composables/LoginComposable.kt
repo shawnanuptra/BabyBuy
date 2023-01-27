@@ -19,11 +19,37 @@ fun NavGraphBuilder.loginComposable(
     composable(
         route = LOGIN_SCREEN,
         enterTransition = {
-            slideIntoContainer(
-                AnimatedContentScope.SlideDirection.Left,
-                tween(ANIMATION_DURATION)
-            )
+            when {
+                (initialState.destination.route == "welcome") ->
+                    slideIntoContainer(
+                        AnimatedContentScope.SlideDirection.Down,
+                        tween(ANIMATION_DURATION)
+                    )
+                (initialState.destination.route == "signup") ->
+                    slideIntoContainer(
+                        AnimatedContentScope.SlideDirection.Right
+                    )
+                else -> null
+            }
         },
+        exitTransition = {
+            when {
+                (targetState.destination.route == "signup") ->
+                    slideOutOfContainer(
+                        AnimatedContentScope.SlideDirection.Left,
+                        tween(ANIMATION_DURATION)
+                    )
+                (targetState.destination.route == "welcome") ->
+                    slideOutOfContainer(
+                        AnimatedContentScope.SlideDirection.Up,
+                        tween(ANIMATION_DURATION)
+                    )
+                else -> slideOutOfContainer(
+                    AnimatedContentScope.SlideDirection.Down,
+                    tween(ANIMATION_DURATION)
+                )
+            }
+        }
     ) { navBackStackEntry ->
 
         // DISPLAY UI SCREEN

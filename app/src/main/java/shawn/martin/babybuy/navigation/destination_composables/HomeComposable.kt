@@ -22,7 +22,7 @@ fun NavGraphBuilder.homeComposable(
         route = HOME_SCREEN,
         enterTransition = {
             slideIntoContainer(
-                AnimatedContentScope.SlideDirection.Left,
+                AnimatedContentScope.SlideDirection.Down,
                 tween(ANIMATION_DURATION)
             )
         }
