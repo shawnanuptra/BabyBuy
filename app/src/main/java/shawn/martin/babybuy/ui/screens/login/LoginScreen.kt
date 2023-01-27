@@ -1,11 +1,13 @@
 package shawn.martin.babybuy.ui.screens
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -13,7 +15,10 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.firebase.auth.FirebaseAuth
 import shawn.martin.babybuy.R
+import shawn.martin.babybuy.data.AuthRepositoryImpl
+import shawn.martin.babybuy.data.Resource
 import shawn.martin.babybuy.ui.components.PrimaryButton
 import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
 import shawn.martin.babybuy.util.Constants.SCREEN_HORIZONTAL_PADDING
@@ -26,8 +31,13 @@ fun LoginScreen(
     navigateToSignup: () -> Unit,
     navigateToHome: () -> Unit
 ) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+
+    val loginFlow = sharedViewModel.loginFlow.collectAsState()
     Scaffold(
     ) { _ ->
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -54,9 +64,13 @@ fun LoginScreen(
             }
 
             Column() {
-                OutlinedTextField(value = "Email", onValueChange = {})
+                OutlinedTextField(value = email, onValueChange = {
+                    email = it;
+                })
                 Box(modifier = Modifier.height(10.dp))
-                OutlinedTextField(value = "Password", onValueChange = {})
+                OutlinedTextField(value = password, onValueChange = {
+                    password = it
+                })
                 Box(modifier = Modifier.height(10.dp))
                 Text(
                     text = "Forgot password?",
@@ -67,7 +81,9 @@ fun LoginScreen(
             }
 
             PrimaryButton(
-                onClick = navigateToHome,
+                onClick = {
+                    sharedViewModel.logIn(email, password)
+                },
                 text = stringResource(id = R.string.log_in_button)
             )
 
@@ -87,13 +103,32 @@ fun LoginScreen(
 
             }
         }
+        loginFlow.value.let {
+            when (it) {
+                is Resource.Failure -> {
+                    val context = LocalContext.current
+                    Toast.makeText(context, it.exception.message, Toast.LENGTH_LONG).show()
+                }
+                Resource.Loading -> {
+                    CircularProgressIndicator()
+                }
+                is Resource.Success -> {
+                    LaunchedEffect(Unit) {
+                        navigateToHome()
+
+                    }
+                }
+            }
+        }
     }
 }
 
 @Composable
 @Preview
 fun LoginScreenPreview() {
-    LoginScreen(sharedViewModel = SharedViewModel(), navigateToSignup = { }) {
+    LoginScreen(
+        sharedViewModel = SharedViewModel(repository = AuthRepositoryImpl(FirebaseAuth.getInstance())),
+        navigateToSignup = { }) {
 
     }
 }

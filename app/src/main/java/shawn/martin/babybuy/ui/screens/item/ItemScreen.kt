@@ -20,7 +20,7 @@ import shawn.martin.babybuy.util.Constants
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ItemScreen(
-    sharedViewModel: SharedViewModel,
+    sharedViewModel: SharedViewModel?,
     navigateToHome: () -> Unit,
 ) {
     Scaffold(
@@ -88,5 +88,5 @@ fun ItemScreen(
 @Composable
 @Preview
 fun ItemScreenPreview() {
-    ItemScreen(sharedViewModel = SharedViewModel(), navigateToHome = {})
+    ItemScreen(sharedViewModel = null, navigateToHome = {})
 }

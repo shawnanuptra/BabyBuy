@@ -17,7 +17,7 @@ class Screens(navController: NavController) {
     }
     val home = {
         navController.navigate(route = HOME_SCREEN) {
-            popUpTo(HOME_SCREEN) { inclusive = true }
+            popUpTo(LOGIN_SCREEN) { inclusive = true }
         }
     }
     val item = {

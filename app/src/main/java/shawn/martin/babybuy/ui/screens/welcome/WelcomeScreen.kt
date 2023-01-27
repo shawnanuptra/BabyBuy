@@ -57,6 +57,6 @@ fun WelcomeScreen(
 @Composable
 @Preview
 fun WelcomeScreenPreview() {
-    WelcomeScreen(sharedViewModel = SharedViewModel(), navigateToLogin = { }) {
-    }
+//    WelcomeScreen(sharedViewModel = SharedViewModel(), navigateToLogin = { }) {
+//    }
 }

@@ -75,7 +75,13 @@ fun HomeScreen(
             ) { padding ->
 
                 Column(modifier = Modifier.padding(horizontal = SCREEN_HORIZONTAL_PADDING.dp)) {
-                    HomeTitle(1f, navigateToWelcome)
+                    HomeTitle(1f,
+                        navigateToWelcome =
+                        {
+                            sharedViewModel.logOut()
+                            navigateToWelcome
+                        }
+                    )
                     LazyColumn(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -83,7 +89,11 @@ fun HomeScreen(
                         verticalArrangement = Arrangement.spacedBy(15.dp)
                     ) {
                         items(5) {
-                            ListItem("Item Name", 52, ItemStatus.PURCHASED)
+                            ListItem(
+                                sharedViewModel.currentUser?.uid ?: "not login",
+                                52,
+                                ItemStatus.PURCHASED
+                            )
                         }
                     }
                     Spacer(modifier = Modifier.weight(1f))
@@ -138,5 +148,5 @@ fun MyFAB(onClicked: () -> Unit) {
 @Composable
 @Preview
 fun HomeScreenPreview() {
-    HomeScreen(sharedViewModel = SharedViewModel(), navigateToItem = {}, navigateToWelcome = {})
+//    HomeScreen(sharedViewModel = SharedViewModel(), navigateToItem = {}, navigateToWelcome = {})
 }

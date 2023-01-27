@@ -8,11 +8,13 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import dagger.hilt.android.AndroidEntryPoint
 import shawn.martin.babybuy.navigation.SetUpNavigation
 import shawn.martin.babybuy.ui.theme.BabyBuyTheme
 import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
 
 @ExperimentalAnimationApi
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
