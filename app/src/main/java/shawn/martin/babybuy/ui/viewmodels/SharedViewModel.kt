@@ -1,5 +1,6 @@
 package shawn.martin.babybuy.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
@@ -38,6 +39,7 @@ class SharedViewModel @Inject constructor(
 
         val result = repository.logIn(email, password)
         _logInFlow.value = result
+        Log.d("log", "logIn from SVM is called")
     }
 
     fun signUp(email: String, password: String) = viewModelScope.launch {

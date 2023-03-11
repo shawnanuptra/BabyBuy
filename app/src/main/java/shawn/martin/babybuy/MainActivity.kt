@@ -10,7 +10,7 @@ import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
 import shawn.martin.babybuy.navigation.SetUpNavigation
-import shawn.martin.babybuy.ui.theme.BabyBuyTheme
+import shawn.martin.babybuy.ui.theme.CircuitTheme
 import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
 
 @ExperimentalAnimationApi
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         //initialize SplashScreen
         installSplashScreen()
         setContent {
-            BabyBuyTheme {
+            CircuitTheme {
                 navController = rememberAnimatedNavController()
                 SetUpNavigation(navController = navController, sharedViewModel = sharedViewModel)
 

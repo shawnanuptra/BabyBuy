@@ -75,12 +75,10 @@ fun HomeScreen(
             ) { padding ->
 
                 Column(modifier = Modifier.padding(horizontal = SCREEN_HORIZONTAL_PADDING.dp)) {
-                    HomeTitle(1f,
-                        navigateToWelcome =
-                        {
-                            sharedViewModel.logOut()
-                            navigateToWelcome
-                        }
+                    HomeTitle(
+                        1f,
+                        navigateToWelcome = navigateToWelcome,
+                        sharedViewModel = sharedViewModel,
                     )
                     LazyColumn(
                         modifier = Modifier

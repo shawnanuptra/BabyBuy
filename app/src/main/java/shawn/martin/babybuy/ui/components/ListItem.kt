@@ -2,18 +2,21 @@ package shawn.martin.babybuy.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import shawn.martin.babybuy.ui.theme.Shapes
 import shawn.martin.babybuy.util.ItemStatus
-import java.text.DecimalFormat
 
 @Composable
 fun ListItem(
@@ -41,8 +44,18 @@ fun ListItem(
 
         ) {
             Column(Modifier.weight(2f)) {
-                Text(text = name, style = MaterialTheme.typography.h6)
-                Text(text = "$itemStatus", style = MaterialTheme.typography.subtitle2)
+                Text(
+                    text = name,
+                    style = MaterialTheme.typography.h6,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
+                )
+                Text(
+                    text = "$itemStatus",
+                    style = MaterialTheme.typography.subtitle2,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
+                )
             }
             Divider(
                 modifier = Modifier

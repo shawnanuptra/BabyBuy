@@ -3,13 +3,20 @@ package shawn.martin.babybuy.ui.screens
 import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
@@ -31,6 +38,10 @@ fun SignupScreen(
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+
+    var passwordVisible by remember { mutableStateOf(false) }
+    var passworConfirmVisible by remember { mutableStateOf(false) }
 
     val signUpFlow = sharedViewModel.signUpFlow.collectAsState()
 
@@ -63,12 +74,75 @@ fun SignupScreen(
                 )
             }
 
+            // Fields
             Column() {
-                OutlinedTextField(value = email, onValueChange = { email = it })
+
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    singleLine = true,
+                    label = { Text("Email") },
+                    placeholder = { Text("example1@gmail.com") },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    visualTransformation = if (passwordVisible) {
+                        VisualTransformation.None
+                    } else {
+                        PasswordVisualTransformation()
+                    },
+                    singleLine = true,
+                    label = { Text("Password") },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType =
+                        KeyboardType.Password
+                    ),
+                    trailingIcon = {
+                        if (passwordVisible) {
+                            IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                                Icon(imageVector = Icons.Filled.Visibility, "Hide password")
+                            }
+                        } else {
+                            IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                                Icon(imageVector = Icons.Filled.VisibilityOff, "Show password")
+                            }
+                        }
+                    }
+                )
                 Box(modifier = Modifier.height(10.dp))
-                OutlinedTextField(value = password, onValueChange = { password = it })
-                Box(modifier = Modifier.height(10.dp))
-                OutlinedTextField(value = "Confirm password", onValueChange = {})
+                OutlinedTextField(
+                    value = confirmPassword,
+                    onValueChange = { confirmPassword = it },
+                    visualTransformation = if (passworConfirmVisible) {
+                        VisualTransformation.None
+                    } else {
+                        PasswordVisualTransformation()
+                    },
+                    singleLine = true,
+                    label = { Text("Password") },
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType =
+                        KeyboardType.Password
+                    ),
+                    trailingIcon = {
+                        if (passworConfirmVisible) {
+                            IconButton(onClick = {
+                                passworConfirmVisible = !passworConfirmVisible
+                            }) {
+                                Icon(imageVector = Icons.Filled.Visibility, "Hide password")
+                            }
+                        } else {
+                            IconButton(onClick = {
+                                passworConfirmVisible = !passworConfirmVisible
+                            }) {
+                                Icon(imageVector = Icons.Filled.VisibilityOff, "Show password")
+                            }
+                        }
+                    }
+                )
                 Box(modifier = Modifier.height(10.dp))
             }
 

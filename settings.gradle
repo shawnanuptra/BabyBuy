@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "BabyBuy"
+rootProject.name = "Circu.it"
 include ':app'

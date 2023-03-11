@@ -11,9 +11,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import shawn.martin.babybuy.R
+import shawn.martin.babybuy.ui.viewmodels.SharedViewModel
 
 @Composable
-fun ColumnScope.HomeTitle(weight: Float, navigateToWelcome: () -> Unit) {
+fun ColumnScope.HomeTitle(
+    weight: Float,
+    navigateToWelcome: () -> Unit,
+    sharedViewModel: SharedViewModel
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -28,7 +33,7 @@ fun ColumnScope.HomeTitle(weight: Float, navigateToWelcome: () -> Unit) {
             )
 
             //Icon to logout
-            IconButton(onClick = { navigateToWelcome() }) {
+            IconButton(onClick = { sharedViewModel.logOut(); navigateToWelcome() }) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_baseline_logout_24),
                     contentDescription = "Log out button"
@@ -54,7 +59,7 @@ fun HomeTitlePreview() {
 
             _ ->
         Column(Modifier.fillMaxSize()) {
-            HomeTitle(weight = 1f, navigateToWelcome = {})
+//            HomeTitle(weight = 1f, navigateToWelcome = {},)
             Spacer(Modifier.weight(9f))
         }
     }

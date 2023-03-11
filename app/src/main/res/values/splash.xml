@@ -3,6 +3,6 @@
     <style name="Theme.App.MySplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#ECECEC</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo</item>
-        <item name="postSplashScreenTheme">@style/Theme.BabyBuy</item>
+        <item name="postSplashScreenTheme">@style/Theme.Circuit</item>
     </style>
 </resources>

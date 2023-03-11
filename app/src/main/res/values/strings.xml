@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">BabyBuy</string>
+    <string name="app_name">Circuit</string>
     <string name="sign_up_button">Sign Up</string>
     <string name="log_in_button">Log In</string>
     <string name="home_title">To Buy</string>
